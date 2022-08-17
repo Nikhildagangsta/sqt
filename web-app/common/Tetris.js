@@ -26,6 +26,8 @@ const Tetris = Object.create(null);
  * @property {Tetris.Tetromino} next_tetromino The next piece to descend.
  * @property {number[]} position Where in the field is the current tetromino.
  * @property {Tetris.Score} score Information relating to the score of the game.
+ * @property {Tetris.Tetromino} held_tetromino
+ * @property {Tetris.Tetromino} can_hold
  */
 
 /**
@@ -305,6 +307,8 @@ Tetris.new_game = function () {
         "game_over": false,
         "next_tetromino": next_tetromino,
         "position": starting_position,
+        "held_tetromino": null,
+        "can_hold": true,
         "score": new_score()
     };
 };
@@ -321,6 +325,20 @@ Tetris.new_game = function () {
  * @returns {number[][]} The List of  coordinates `[x, y]` of each block.
  */
 Tetris.tetromino_coordiates = function (tetromino, position) {
+    return tetromino.grid.flatMap(function (row, row_index) {
+        return row.flatMap(function (block, column_index) {
+            if (block === empty_block) {
+                return [];
+            }
+            return [[
+                position[0] + column_index - Math.floor(tetromino.centre[0]),
+                position[1] + row_index - Math.floor(tetromino.centre[1])
+            ]];
+        });
+    });
+};
+
+Tetris.tetromino_coordiates2 = function (tetromino, position) {
     return tetromino.grid.flatMap(function (row, row_index) {
         return row.flatMap(function (block, column_index) {
             if (block === empty_block) {
@@ -503,6 +521,60 @@ Tetris.soft_drop = function (game) {
     return drop_once(game);
 };
 
+
+//switches current and held tetromino, changes can hold to false, 
+//changes position back to starting position
+// which is a position on the board, but not shown on board, so
+// first switch current with held then put position of current 
+//to starting position, use similar thing as last time but not 
+//change ones at bottom
+/**
+ * @function
+ * @memberof Tetris
+ * @param {Tetris.Game} game The initial state of a game.
+ * @returns {Tetris.Game} The state after a piece is held
+ */
+
+
+Tetris.hold = function(game){
+
+if (game.can_hold === false){
+    return (game);
+}
+
+if (game.held_tetromino === null){
+
+    const [next_tetromino, bag] = game.bag();
+
+    return {
+        "bag": bag,
+        "current_tetromino": game.next_tetromino,
+        "field": game.field,
+        "game_over": game.game_over,
+        "next_tetromino": next_tetromino,
+        "position": starting_position,
+        "held_tetromino": game.current_tetromino,
+        "can_hold": false,
+        "score": game.score
+    };
+}
+
+else {
+
+    return {
+        "bag": game.bag,
+        "current_tetromino": game.held_tetromino,
+        "field": game.field,
+        "game_over": game.game_over,
+        "next_tetromino": game.next_tetromino,
+        "position": starting_position,
+        "held_tetromino": game.current_tetromino,
+        "can_hold": false,
+        "score": game.score
+    };
+}
+}
+
 /**
  * Perform a hard drop, where the piece immediatelt fully descends
  * until it hits the bottom of the field or another block.
@@ -568,6 +640,7 @@ Tetris.next_turn = function (game) {
         return game;
     }
 
+
     const dropped_once = drop_once(game);
     if (!R.equals(game, dropped_once)) {
         return dropped_once;
@@ -579,6 +652,8 @@ Tetris.next_turn = function (game) {
         game.position
     )) {
         return lose(game);
+
+
     }
 
     const locked_field = lock(game);
@@ -594,7 +669,10 @@ Tetris.next_turn = function (game) {
         "game_over": false,
         "next_tetromino": next_tetromino,
         "position": starting_position,
-        "score": game.score
+        "score": game.score,
+        "held_tetromino": game.held_tetromino ,
+        "can_hold": true
+
     };
 };
 
