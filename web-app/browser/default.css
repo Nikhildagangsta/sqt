@@ -19,7 +19,14 @@
     --palette-base4: #616569;
     --palette-base5: #eff0f1;
     --palette-secondary0: #345e75;
-    --palette-secondary1: #3daee9;
+    --palette-secondary1: #e93d74;
+    --palette-secondary2: #5cc71a;
+    --palette-secondary3: #e93dd8;
+    --palette-secondary4: #b8c61f;
+    --palette-secondary5: #0fd2d2;
+    --palette-secondary6: #850672;
+    --palette-secondary7: #fef8fa;
+
 
     --grid-background: #1143c4;
 }
@@ -143,32 +150,32 @@ footer
 
 .cell.J
 {
-    background-color: var(--palette-secondary1);
+    background-color: var(--palette-secondary2);
 }
 
 .cell.L
 {
-    background-color: var(--palette-secondary1);
+    background-color: var(--palette-secondary3);
 }
 
 .cell.O
 {
-    background-color: var(--palette-secondary1);
+    background-color: var(--palette-secondary4);
 }
 
 .cell.S
 {
-    background-color: var(--palette-secondary1);
+    background-color: var(--palette-secondary5);
 }
 
 .cell.T
 {
-    background-color: var(--palette-secondary1);
+    background-color: var(--palette-secondary6);
 }
 
 .cell.Z
 {
-    background-color: var(--palette-secondary1);
+    background-color: var(--palette-secondary7);
 }
 
 .cell.current
