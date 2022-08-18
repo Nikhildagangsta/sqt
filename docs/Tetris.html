@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Tetris.html">Tetris</a><ul class='methods'><li data-type='method'><a href="Tetris.html#.hard_drop">hard_drop</a></li><li data-type='method'><a href="Tetris.html#.is_game_over">is_game_over</a></li><li data-type='method'><a href="Tetris.html#.left">left</a></li><li data-type='method'><a href="Tetris.html#.new_game">new_game</a></li><li data-type='method'><a href="Tetris.html#.next_turn">next_turn</a></li><li data-type='method'><a href="Tetris.html#.right">right</a></li><li data-type='method'><a href="Tetris.html#.rotate_ccw">rotate_ccw</a></li><li data-type='method'><a href="Tetris.html#.rotate_cw">rotate_cw</a></li><li data-type='method'><a href="Tetris.html#.soft_drop">soft_drop</a></li><li data-type='method'><a href="Tetris.html#.tetromino_coordiates">tetromino_coordiates</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Tetris.html">Tetris</a><ul class='methods'><li data-type='method'><a href="Tetris.html#.hard_drop">hard_drop</a></li><li data-type='method'><a href="Tetris.html#.is_game_over">is_game_over</a></li><li data-type='method'><a href="Tetris.html#.left">left</a></li><li data-type='method'><a href="Tetris.html#.new_game">new_game</a></li><li data-type='method'><a href="Tetris.html#.next_turn">next_turn</a></li><li data-type='method'><a href="Tetris.html#.hold">hold</a></li><li data-type='method'><a href="Tetris.html#.right">right</a></li><li data-type='method'><a href="Tetris.html#.rotate_ccw">rotate_ccw</a></li><li data-type='method'><a href="Tetris.html#.rotate_cw">rotate_cw</a></li><li data-type='method'><a href="Tetris.html#.soft_drop">soft_drop</a></li><li data-type='method'><a href="Tetris.html#.tetromino_coordiates">tetromino_coordiates</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -1483,12 +1483,15 @@ Otherwise return the origninal state unchanged.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Tetris.js.html">Tetris.js</a>, <a href="Tetris.js.html#line548">line 548</a>
+        <a href="Tetris.js.html">Tetris.js</a>, <a href="Tetris.js.html#line629">line 629</a>
     </li></ul></dd>
     
 
     
 
+
+
+    
     
 
     
@@ -1621,7 +1624,165 @@ from the top of the field.</p>
     </dd>
 </dl>
 
+
     
+
+
+
+        
+            
+
+    
+
+<h4 class="name" id=".hold"><span class="type-signature">(static) </span>hold<span class="signature">(game)</span><span class="type-signature"> &rarr; {<a href="Tetris.html#.Game">Tetris.Game</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Tetris.js.html">Tetris.js</a>, <a href="Tetris.js.html#line528">line 528</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>hold takes the current piece off the field and holds it in a held grid (same as next piece grid).
+        If there was no piece already held, then the next piece is deployed,
+        otherwise if there is a piece already held then it is deployed.
+        In each case the piece is deployed from the top of the field.
+        Once you hold a piece, you can't hold again until you have locked in a piece.
+</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>game</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Tetris.html#.Game">Tetris.Game</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Tetris.html#.Game">Tetris.Game</a></span>
+
+
+    </dd>
+</dl>
 
 
 
