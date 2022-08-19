@@ -2,7 +2,10 @@
 {
     --grid-columns: 7;
     --grid-rows: 6;
+    --aside-grid-columns: 4;
+    --aside-grid-rows: 2;
     --grid-aspect: var(--grid-columns) / var(--grid-rows);
+    --aside-grid-aspect: var(--aside-grid-columns) / var(--aside-grid-rows);
 
     --footer-height: 48px;
     --header-height: 64px;
@@ -104,6 +107,20 @@ footer
     width: 100%;
 }
 
+aside .grid{
+    aspect-ratio: var(--aside-grid-aspect) ; 
+    max-height: 20%;
+
+
+}
+
+
+#grid2 {
+    margin-bottom: 20px;
+}
+
+
+
 .grid
 {
     aspect-ratio: var(--grid-aspect);
@@ -116,6 +133,16 @@ footer
     max-height: 100%;
     max-width: 100%;
 }
+
+
+aside .row{
+    height: calc(100% / var(--aside-grid-rows));
+}
+
+aside .cell{
+    width: calc(100% / var(--aside-grid-columns));
+}
+
 
 .row
 {
